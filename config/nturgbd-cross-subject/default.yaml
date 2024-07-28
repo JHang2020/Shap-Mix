@@ -1,0 +1,52 @@
+work_dir: ./work_dir/ntu60/xsub/ctrgcn_joint/temporal_713
+weights: #/mnt/netdisk/zhangjh/Code/CTR-GCN-main/work_dir/ntu60/xsub/ctrgcn_joint/shapley_random_dist_tem04/runs-5-0.7383999514769212.pt
+start_epoch: 0
+# feeder
+feeder: feeders.feeder_ntu.Feeder
+train_feeder_args:
+  data_path: /mnt/netdisk/wulh/MAMP-main/data/ntu/NTU60_XSub.npz
+  split: train
+  vel: False
+  bone: False
+  debug: False
+  random_choose: False
+  random_shift: False
+  random_move: False
+  window_size: 64
+  normalization: False
+  random_rot: True
+  p_interval: [0.5, 1]
+
+
+test_feeder_args:
+  data_path: /mnt/netdisk/wulh/MAMP-main/data/ntu/NTU60_XSub.npz
+  split: test
+  vel: False
+  bone: False
+  window_size: 64
+  p_interval: [0.95]
+  debug: False
+
+# model
+model: model.ctrgcn.Model
+model_args:
+  num_class: 60
+  num_point: 25
+  num_person: 2
+  graph: graph.ntu_rgb_d.Graph
+  graph_args:
+    labeling_mode: 'spatial'
+
+#optim
+weight_decay: 0.0004
+base_lr: 0.1
+lr_decay_rate: 0.1
+step: [35, 55]
+warm_up_epoch: 5
+
+# training
+device: [0]
+batch_size: 64
+test_batch_size: 64
+num_epoch: 65
+nesterov: True

@@ -1,0 +1,62 @@
+work_dir: ./work_dir/ntu120/xsub/ctrgcn_joint/LT/baseline/IF50
+#cb_loss: False
+#remix: True
+#drw: True
+#dataset: ntu120csub
+phase: test
+weights: /mnt/netdisk/zhangjh/Code/CTR-GCN-main/work_dir/ntu120/xsub/ctrgcn_joint/LT/logit_adjust/runs-63-15309.pt
+start_epoch: 0 #15
+#naive_estimate_epoch: 5
+#naive_mix_epoch: 5
+# feeder
+feeder: feeders.feeder_ntu.Feeder_LT_nosample
+train_feeder_args:
+  data_path: data/ntu120/NTU120_CSub.npz
+  split: train
+  vel: False
+  bone: False
+  debug: False
+  random_choose: False
+  random_shift: False
+  random_move: False
+  window_size: 64
+  normalization: False
+  random_rot: True
+  class_balance: True #class balance resampling, otherwise random over resampling
+  p_interval: [0.5, 1]
+  split_path: /mnt/netdisk/zhangjh/Code/BRL/data/NTU120_LT/NTU120_xsub_exp_10.txt
+  train_id_path: /mnt/netdisk/zhangjh/Code/CTR-GCN-main/data/ntu120/statistics/CSub_train_id.txt
+  sample_name_path: /mnt/netdisk/zhangjh/Code/CTR-GCN-main/data/ntu120/statistics/skes_available_name.txt
+
+test_feeder_args:
+  data_path: data/ntu120/NTU120_CSub.npz
+  split: test
+  window_size: 64
+  p_interval: [0.95]
+  vel: False
+  bone: False
+  debug: False
+
+# model
+model: model.ctrgcn.Model
+model_args:
+  num_class: 120
+  num_point: 25
+  num_person: 2
+  graph: graph.ntu_rgb_d.Graph
+  graph_args:
+    labeling_mode: 'spatial'
+
+#optim
+weight_decay: 0.0004
+base_lr: 0.1
+lr_decay_rate: 0.1
+step: [60, 80]
+warm_up_epoch: 5
+
+# training
+device: [0]
+batch_size: 64
+test_batch_size: 64
+num_epoch: 100
+nesterov: True

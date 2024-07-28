@@ -1,0 +1,47 @@
+work_dir: ./work_dir/k400/ctrgcn_joint/shapley_mix_len100_cos
+cos: True
+weights: 
+start_epoch: 0
+# feeder
+feeder: pyskl_datasets.pose_dataset.PoseDataset
+train_feeder_args:
+  ann_file: '/mnt/netdisk/Datasets/097-Kinect-Skeleton/k400_hrnet.pkl'
+  split: 'train'
+  valid_ratio: 0.0
+  box_thr: 0.5
+  class_prob: None
+  memcached: False
+  debug: False
+
+test_feeder_args:
+  ann_file: '/mnt/netdisk/Datasets/097-Kinect-Skeleton/k400_hrnet.pkl'
+  split: 'val'
+  box_thr: 0.5
+  class_prob: None
+  memcached: False
+  debug: False
+
+# model
+model: model.ctrgcn.Model
+model_args:
+  num_class: 400
+  num_point: 17
+  num_person: 2
+  in_channels: 3
+  graph: graph.kinect.Graph
+  graph_args:
+    labeling_mode: 'spatial'
+
+#optim
+weight_decay: 0.0005
+base_lr: 0.1
+lr_decay_rate: 0.1
+step: [30, 50]
+warm_up_epoch: 5
+
+# training
+device: [0]
+batch_size: 80
+test_batch_size: 64
+num_epoch: 70
+nesterov: True
