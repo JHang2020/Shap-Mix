@@ -8,7 +8,7 @@ This repo is the official implementation for [Shap-Mix: Shapley Value Guided Mix
 
 *This is an efficient and effective plug-in augmentation method to improve your skeleton-based action recognition model.*
 
-## Architecture of CTR-GC
+## Method Overview
 ![image](src/pipeline.png)
 # Prerequisites
 
