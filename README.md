@@ -40,7 +40,7 @@ python  shapley_mix_main_k400.py --config /mnt/netdisk/zhangjh/Code/CTR-GCN-main
 
 ### Pretrained Models
 
-- The pretrained models can be found [here] (https://drive.google.com/drive/folders/1XuBTaDTwdK5JB2dqqavBS_W-EUKwR1nU?usp=sharing).
+- The pretrained models can be found [here](https://drive.google.com/drive/folders/1XuBTaDTwdK5JB2dqqavBS_W-EUKwR1nU?usp=sharing).
 
 ## Acknowledgements
 
