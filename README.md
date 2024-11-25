@@ -4,7 +4,7 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/shap-mix-shapley-value-guided-mixing-for-long/skeleton-based-action-recognition-on-ntu-rgbd-1)](https://paperswithcode.com/sota/skeleton-based-action-recognition-on-ntu-rgbd-1?p=shap-mix-shapley-value-guided-mixing-for-long)
 
 
-This repo is the official implementation for [Shap-Mix: Shapley Value Guided Mixing for Long-Tailed Skeleton Based Action Recognition](https://arxiv.org/abs/2308.03975). The paper is accepted to IJCAI 2024. 
+This repo is the official implementation for [Shap-Mix: Shapley Value Guided Mixing for Long-Tailed Skeleton Based Action Recognition](https://arxiv.org/abs/2407.12312). The paper is accepted to IJCAI 2024. 
 
 *This is an efficient and effective plug-in augmentation method to improve your skeleton-based action recognition model.*
 
